@@ -2,6 +2,7 @@
   <div class="home">
     <p>Hello World! {{msg}}</p>
     <button v-on:click="greet">点击</button>
+
   </div>
 </template>
 
@@ -17,11 +18,12 @@ export default {
   },
   methods:{
     greet(){
-      axios.get(this.HOST+'/demo/test').then(function(response){
-        alert(response);
-      }).catch(function(response){
-        alert(response);
-      })
+      // axios.get(this.HOST+'/demo/test').then(function(response){
+      //   alert(response);
+      // }).catch(function(response){
+      //   alert(response);
+      // })
+      this.$router.push({path:'/second'})
     }
   }
 }
