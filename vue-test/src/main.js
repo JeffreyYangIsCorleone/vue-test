@@ -4,7 +4,8 @@ import Vue from 'vue'
 import axios from 'axios'
 import App from './App'
 import router from './router'
-
+import './assets/css/bootstrap.min.css'
+import './assets/js/bootstrap.min'
 
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
