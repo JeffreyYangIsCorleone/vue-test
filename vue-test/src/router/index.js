@@ -14,11 +14,17 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
-
     {
       path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,
+      // children:[
+      //   {
+      //     // path: 'home',
+      //     // name: 'Home',
+      //     // component: Home,
+      //   }
+      // ]
     },
 
     {

@@ -25,11 +25,11 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   plugins: [ 
-    new webpack.ProvidePlugin({ 
-          $:"jquery", 
-          jQuery:"jquery", 
-         "windows.jQuery":"jquery"
-    }) 
+    // new webpack.ProvidePlugin({ 
+    //       $:"jquery", 
+    //       jQuery:"jquery", 
+    //      "windows.jQuery":"jquery"
+    // }) 
   ], 
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -88,12 +88,5 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   },
-
-  alias: {  
-    'vue$': 'vue/dist/vue.esm.js',  
-    '@': resolve('src'),  
-    'assets': path.resolve(__dirname, '../src/assets'),  
-    'jquery': "jquery/src/jquery"  
-  }
   
 }

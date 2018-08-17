@@ -6,7 +6,8 @@
   </div>
 </template>
 <script>
-// import $ from 'jquery'
+import $ from 'jquery'
+
 
 export default {
   mounted() {
@@ -17,12 +18,4 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped>
-.second{
-  background-color: red;
-  .dd{
-      
-  }
-}
-</style>
 
