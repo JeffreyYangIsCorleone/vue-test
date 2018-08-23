@@ -3,6 +3,7 @@
     <div class="panel panel-default">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
+            <a class="navbar-brand" href="#">JeffreyTech</a>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -10,7 +11,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">JeffreyTech</a>
+                <div class="title_div" v-html="title"></div>
+                
             </div>
           </div>
         </nav>
@@ -19,8 +21,7 @@
         <div id="left-panel" class="panel panel-primary">
             <div>
               <nav>
-                <div id="logo-div" class="logo">
-                  
+                <div id="logo-div" class="logo">                  
                 </div>
                 <div class="">
                   <ul class="nav nav-pills nav-stacked">
@@ -50,14 +51,64 @@
 </template>
 
 <script>
+import axios from 'axios'
+
   export default {
-    name: 'App'
-  }
+    name: 'App',
+    data(){
+       return {
+         title:'',
+         titles:[]
+       }    
+    },
+    mounted(){
+        let _self = this;
+        axios.get(this.HOST + '/demo/test').then(function(response){
+        let list = response.data.success;
+        let p_title = '';
+        let s_title = '';
+        let menus = {
+          str:''
+        };
+        list.forEach(element => {
+                let name = element.name;
+               // console.log(name);
+                let code = element.code;
+                let parent = element.parent;
+                let url = element.url;
+                if( parent == null){
+                    _self.title += "<a class=\"navbar-brand\" href=\"#\">" + name + "</a>";
+                    console.log("parent:"+name);
+                    p_title = code;
+                    menus.str = null ;
+                }else{
+                    if( url == null){
+                        s_title = code;
+                        console.log("parent:"+p_title+",s_title:"+s_title);
+                        s_title = code;
+                    }else{
+                         console.log("parent:"+p_title+",s_title:"+s_title+",this:"+ url);
+                         menus.str = "parent:"+p_title+",s_title:"+s_title+",this:"+ url;
+                    }
+                }
+                if(  menus.str != null &&  menus.str != ''){
+                    _self.titles.push(menus.str);
+                } 
+        });
+        console.log(_self.titles);
+      }).catch(function(response){
+        //alert(response);
+      })
+   },
+   methods:{
+      
+   }
+}
 
   
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -74,8 +125,13 @@
 .container-fluid{
   background-color: rgb(40, 94, 155);
  .navbar-brand{
+   margin-left: 20px;
    color: aliceblue;
  }
+}
+
+.navbar-header{
+  float: right;
 }
 
 #left-panel{
