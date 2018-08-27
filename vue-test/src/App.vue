@@ -52,6 +52,18 @@
 
 <script>
 import axios from 'axios'
+import $ from 'jquery'
+
+  // function jsonP(){
+  //   $.ajax({ 
+  //         url: 'http://127.0.0.1:8081/demo/test', 
+  //         type: 'GET', 
+  //         dataType: 'JSONP', 
+  //         success: function (res) { 
+  //           console.log(res);
+  //         } 
+  //       }) 
+  // }
 
   export default {
     name: 'App',
@@ -62,8 +74,9 @@ import axios from 'axios'
        }    
     },
     mounted(){
+     // jsonP();
         let _self = this;
-        axios.get(this.HOST + '/demo/test').then(function(response){
+        axios.get('http://47.107.36.143/api/demo/test').then(function(response){
         let list = response.data.success;
         let p_title = '';
         let s_title = '';
