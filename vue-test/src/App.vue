@@ -76,7 +76,7 @@ import $ from 'jquery'
     mounted(){
      // jsonP();
         let _self = this;
-        axios.get('http://localhost:8082/demo/test').then(function(response){
+        axios.get('http://127.0.0.1/api/demo/test').then(function(response){
         let list = response.data.success;
         let p_title = '';
         let s_title = '';
