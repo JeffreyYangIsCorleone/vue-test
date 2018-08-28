@@ -11,7 +11,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="title_div" v-html="title"></div>
+                <!-- <div class="title_div" v-html="title"></div> -->
+                <a class="navbar-brand" @click="changeMenu(index)" v-for="(item,index) in list" :key="index">{{item.name}}</a>
                 
             </div>
           </div>
@@ -70,19 +71,32 @@ import $ from 'jquery'
     data(){
        return {
          title:'',
-         titles:[]
+         titles:[],
+         list:[]
        }    
     },
+    methods:{
+      changeMenu(index){
+            console.log(index);
+            console.log(this.titles[index]);
+        }
+   },
     mounted(){
+        // function changeMenu(index){
+        //     console.log(index);
+        //     console.log(_self.titles[index]);
+        // };
+
      // jsonP();
         let _self = this;
         axios.get('http://47.107.36.143/api/demo/test').then(function(response){
-        let list = response.data.success;
+        _self.list = response.data.success;
         let p_title = '';
         let s_title = '';
         let menus = {
           str:''
         };
+        let i = 0;
         list.forEach(element => {
                 let name = element.name;
                // console.log(name);
@@ -90,7 +104,8 @@ import $ from 'jquery'
                 let parent = element.parent;
                 let url = element.url;
                 if( parent == null){
-                    _self.title += "<a class=\"navbar-brand\" href=\"#\">" + name + "</a>";
+                    //_self.title += "<a class=\"navbar-brand\" onclick=\"changeMenu(" + i +")\">" + name + "</a>";
+                    i ++;
                     console.log("parent:"+name);
                     p_title = code;
                     menus.str = null ;
@@ -108,20 +123,19 @@ import $ from 'jquery'
                     _self.titles.push(menus.str);
                 } 
         });
-        console.log(_self.titles);
+        console.log(_self.titles[0]);
       }).catch(function(response){
         //alert(response);
       })
-   },
-   methods:{
-      
    }
 }
+
 
   
 </script>
 
 <style lang="scss">
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
