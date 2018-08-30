@@ -2,7 +2,7 @@
   <div>
     <div class="panel panel-default">
         <nav class="navbar navbar-default">
-          <div class="container-fluid">
+          <div class="container-fluid home">
             <a class="navbar-brand" href="#">JeffreyTech</a>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -25,7 +25,7 @@
                 <div id="logo-div" class="logo">                  
                 </div>
                 <div class="">
-                  <ul class="nav nav-pills nav-stacked">
+                  <!-- <ul class="nav nav-pills nav-stacked">
                     <li><a href="" class="glyphicon glyphicon-menu-right inactive"> 计算机</a>
                       <ul style="display: none" class="nav nav-pills nav-stacked">
                         <li><a href="" class="glyphicon glyphicon-menu-right"> -- 台式机</a></li> 
@@ -39,7 +39,7 @@
                         <li><a href="" class="glyphicon glyphicon-menu-right"> -- 数码摄像机</a></li> 
                       </ul>
                     </li>
-                  </ul>
+                  </ul> -->
                 </div>
               </nav>
             </div>
@@ -82,12 +82,6 @@ import $ from 'jquery'
         }
    },
     mounted(){
-        // function changeMenu(index){
-        //     console.log(index);
-        //     console.log(_self.titles[index]);
-        // };
-
-     // jsonP();
         let _self = this;
         axios.get('http://47.107.36.143/api/demo/test').then(function(response){
         _self.list = response.data.success;

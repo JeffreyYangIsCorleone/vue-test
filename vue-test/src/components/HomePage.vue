@@ -25,6 +25,11 @@ export default {
       // })
       this.$router.push({path:'/second'})
     }
-  }
+  },
+//  mounted(){
+//    router.before({
+
+//    })
+//  }
 }
 </script>

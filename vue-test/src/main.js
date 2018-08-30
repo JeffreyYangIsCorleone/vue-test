@@ -12,6 +12,18 @@ Vue.prototype.$ajax = axios
 Vue.prototype.HOST = '/api'
 
 /* eslint-disable no-new */
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') {
+    next()
+  } else {
+    if (!window.localStorage.user) {
+      next({ path: '/login' })
+    } else {
+      next()
+    }
+  }
+})
+
 new Vue({
   el: '#app',
   router,
