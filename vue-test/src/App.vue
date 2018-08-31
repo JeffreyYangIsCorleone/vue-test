@@ -83,7 +83,7 @@ import $ from 'jquery'
    },
     mounted(){
         let _self = this;
-        axios.get('http://47.107.36.143/api/demo/test').then(function(response){
+        axios.get(this.HOST+'/demo/test').then(function(response){
         _self.list = response.data.success;
         let p_title = '';
         let s_title = '';
@@ -119,7 +119,7 @@ import $ from 'jquery'
         });
         console.log(_self.titles[0]);
       }).catch(function(response){
-        //alert(response);
+        console.log(response);
       })
    }
 }

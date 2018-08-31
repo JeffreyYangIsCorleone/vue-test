@@ -52,7 +52,7 @@ export default {
     login(){
         axios({
             method:"post",
-            url:"http://47.107.36.143/api/login/check_login",
+            url:this.HOST+"/login/check_login",
             data:{
                 account:this.user.account,
                 password:this.user.password
